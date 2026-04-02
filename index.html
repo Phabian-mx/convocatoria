@@ -67,17 +67,18 @@
         .pergamino-abierto {
             display: none;
             width: 100%;
+            max-width: 700px;
             flex-direction: column;
             align-items: center;
             opacity: 0;
             transition: opacity 0.8s ease;
+            margin: 0 auto; /* Para centrar todo en PC */
         }
 
         /* Rodillos */
         .rodillo {
             display: block;
             width: 100%;
-            max-width: 100%;
             height: auto;
             position: relative;
             z-index: 10;
@@ -86,15 +87,14 @@
 
         /* Cuerpo del papel (PC - Base) */
         .cuerpo-papel {
-            width: 88%; 
-            max-width: 550px; 
+            width: 82%; 
             background-image: url('4.png');
             background-size: 100% 100%;
             background-position: center;
             
             /* Ajuste de márgenes para la unión con el rodillo */
-            margin-top: -10%; 
-            margin-bottom: -10%;
+            margin-top: -25%; 
+            margin-bottom: -25%;
 
             /* Espaciado interior */
             padding: 16% 8% 12% 8%;
