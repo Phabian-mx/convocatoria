@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
+ /* --- REGLA GLOBAL --- */
+        /* Esto asegura que los paddings no ensanchen el papel en ningún dispositivo */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         /* --- FONDO DEL SITIO --- */
         body {
             margin: 0;
@@ -15,7 +21,7 @@
             background-color: #1a0800;
             background-image: 
                 radial-gradient(circle at 50% 50%, #3a1505 0%, #0a0200 100%),
-                url('https://www.transparenttextures.com/patterns/stardust.png'); /* Polvo de estrellas */
+                url('https://www.transparenttextures.com/patterns/stardust.png');
             font-family: 'Georgia', serif;
             display: flex;
             justify-content: center;
@@ -32,7 +38,7 @@
             align-items: center;
         }
 
-        /* --- ESTADO 1: PERGAMINO CERRADO (Imagen 1) --- */
+        /* --- ESTADO 1: PERGAMINO CERRADO --- */
         .pergamino-cerrado {
             width: 100%;
             max-width: 600px;
@@ -54,11 +60,12 @@
             font-style: italic;
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-align: center;
         }
 
         /* --- ESTADO 2: PERGAMINO DESPLEGADO --- */
         .pergamino-abierto {
-            display: none; /* Oculto inicialmente */
+            display: none;
             width: 100%;
             flex-direction: column;
             align-items: center;
@@ -66,9 +73,9 @@
             transition: opacity 0.8s ease;
         }
 
-        /* Rodillos (Imágenes 2 y 3) */
+        /* Rodillos */
         .rodillo {
-            display: block; /* ¡ESTO ELIMINA EL ESPACIO INFERIOR! */
+            display: block;
             width: 100%;
             max-width: 100%;
             height: auto;
@@ -77,23 +84,19 @@
             filter: drop-shadow(0 15px 20px rgba(0,0,0,0.7));
         }
 
-        /* Cuerpo del papel (Imagen 4 repitiéndose) */
+        /* Cuerpo del papel (PC - Base) */
         .cuerpo-papel {
-            /* Ajustamos el ancho para que coincida visualmente con el rodillo */
             width: 88%; 
             max-width: 550px; 
             background-image: url('4.png');
             background-size: 100% 100%;
             background-position: center;
             
-            /* ✨ ESTO ES CLAVE: Evita que el padding desborde el ancho de la hoja */
-            box-sizing: border-box; 
+            /* Ajuste de márgenes para la unión con el rodillo */
+            margin-top: -10%; 
+            margin-bottom: -10%;
 
-            /* Margen negativo moderado solo para esconder la unión detrás del rodillo */
-            margin-top: -12%; 
-            margin-bottom: -12%;
-
-            /* Padding en porcentajes para que la separación sea proporcional */
+            /* Espaciado interior */
             padding: 16% 8% 12% 8%;
 
             box-shadow: inset 0 0 50px rgba(90, 40, 10, 0.4);
@@ -108,7 +111,7 @@
         /* --- CONTENIDO DE TEXTO --- */
         .contenido-interno {
             opacity: 0;
-            transition: opacity 1s ease 1s; /* Aparece después de que baja el papel */
+            transition: opacity 1s ease 1s;
             color: #3e2723;
         }
 
@@ -119,7 +122,8 @@
             padding-bottom: 20px;
         }
 
-        .encabezado h3 { font-size: 16px; font-weight: normal; margin-bottom: 5px; }
+        /* Tamaños de fuente para PC */
+        .encabezado h3 { font-size: 16px; font-weight: normal; margin: 0 0 5px 0; }
         .encabezado h1 { font-size: 26px; color: #2c1a10; margin: 15px 0; letter-spacing: 1px; }
         .encabezado h2 { font-size: 20px; font-style: italic; color: #4a2e15; margin: 0; }
         
@@ -130,20 +134,11 @@
             margin: -10px 0 20px 0;
         }
 
-        /* Ajustamos los párrafos normales */
-        .cuerpo-texto p { 
-            line-height: 1.4; 
+        .cuerpo-texto p, .cuerpo-texto li { 
+            line-height: 1.5; 
             text-align: justify; 
             font-size: 15px; 
-            margin-bottom: 2px; 
-        }
-
-        /* Ajustamos las listas */
-        .cuerpo-texto li { 
-            line-height: 1.4; 
-            text-align: justify; 
-            font-size: 15px; 
-            margin-bottom: 2px; 
+            margin-bottom: 8px; 
         }
 
         .cuerpo-texto strong { 
@@ -153,6 +148,7 @@
 
         .foto-perfil {
             width: 300px;
+            max-width: 100%;
             display: block;              
             margin: 0 auto 20px auto;    
             padding: 4px;
@@ -169,45 +165,7 @@
             font-size: 14px;
         }
 
-        .btn-cerrar {
-            display: block;
-            margin: 40px auto 20px;
-            padding: 10px 30px;
-            background-color: transparent;
-            border: 2px solid #5a3a22;
-            color: #5a3a22;
-            font-family: 'Georgia', serif;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
-
-        .btn-cerrar:hover { background-color: #5a3a22; color: #e6cdac; }
-
-        @media (max-width: 600px) {
-            .cuerpo-papel { 
-                /* Mantenemos el mismo ancho para que siga coincidiendo con el rodillo */
-                width: 88%; 
-                margin-top: -15%; 
-                margin-bottom: -15%;
-                /* Aumentamos el espacio arriba (25%) para empujar el texto más abajo del rodillo en celulares */
-                padding: 25% 6% 15% 6%; 
-            }
-            .estado-abierto { 
-                padding: 80px 20px 50px 20px !important; 
-            }
-            .foto-perfil { 
-                width: 80%; 
-                margin: 0 auto 20px auto; 
-            }
-            .encabezado h1 { 
-                font-size: 22px; 
-            }
-        }
-
-        /* --- EFECTO DE ENROLLADO --- */
+        /* --- EFECTOS DE ANIMACIÓN --- */
         .enrollando {
             transform: scaleY(0);
             transform-origin: top;
@@ -219,17 +177,52 @@
             transform-origin: top;
         }
 
-        .estado-visible {
-            opacity: 1 !important;
-        }
+        .estado-visible { opacity: 1 !important; }
 
-        #papel.desenrollado {
-            transform: scaleY(1);
-        }
-       .audio-control {
+        #papel.desenrollado { transform: scaleY(1); }
+
+        /* Botón de Audio */
+        .audio-control {
             position: fixed; bottom: 30px; right: 30px; z-index: 11000;
             background: rgba(20,0,0,0.6); border: 2px solid var(--dorado-real); border-radius: 50%;
             width: 55px; height: 55px; cursor: pointer; font-size: 22px; color: gold;
+        }
+
+        /* =========================================
+           ✨ VERSIÓN PARA CELULARES (Mejorada) ✨
+           ========================================= */
+        @media (max-width: 600px) {
+            .cuerpo-papel { 
+                width: 90%; 
+                margin-top: -8%; /* Ajuste suave para que el papel y el rodillo conecten bien */
+                margin-bottom: -8%;
+                /* Mucho espacio arriba (22%) para que el texto no toque el rodillo */
+                padding: 22% 6% 15% 6%; 
+            }
+            
+            /* REDUCCIÓN DE TEXTOS PARA QUE SE VEAN BIEN EN MÓVIL */
+            .encabezado h1 { font-size: 20px; margin: 10px 0; }
+            .encabezado h2 { font-size: 16px; }
+            .encabezado h3 { font-size: 13px; }
+            
+            .adorno { font-size: 18px; margin: 0 0 15px 0; }
+
+            .cuerpo-texto p, .cuerpo-texto li { 
+                font-size: 13px; /* Letra de párrafos más pequeña y proporcionada */
+                line-height: 1.4; 
+            }
+            .cuerpo-texto strong { font-size: 14px; }
+            
+            .footer-convocatoria { font-size: 12px; }
+
+            .foto-perfil { 
+                width: 85%; /* Mantiene la foto con buen tamaño pero respetando los márgenes */
+                margin: 0 auto 15px auto; 
+            }
+            
+            .estado-abierto { 
+                padding: 40px 10px 30px 10px !important; 
+            }
         }
     </style>
 </head>
