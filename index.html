@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="1.png">
+<link rel="preload" as="image" href="2.png">
+<link rel="preload" as="image" href="3.png">
+<link rel="preload" as="image" href="4.png">
     <style>
         /* --- FONDO DEL SITIO --- */
         body {
@@ -213,9 +217,9 @@
     </style>
 </head>
 <body>
-    <audio id="musica" loop>
-        <source src="Nocturne.mp3" type="audio/mpeg">
-    </audio>
+<audio id="musica" loop preload="metadata">
+    <source src="Nocturne.mp3" type="audio/mpeg">
+</audio>
 
     <button id="btnMusica" class="audio-control">🔊</button>
     
