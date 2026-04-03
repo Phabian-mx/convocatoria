@@ -27,6 +27,8 @@
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         .contenedor-principal {
@@ -87,17 +89,17 @@
 
         /* Cuerpo del papel (PC - Base) */
         .cuerpo-papel {
-            width: 82%; 
+            width: 85%; 
             background-image: url('4.png');
-            background-size: 100% 100%;
+            background-size: 98% 98%;
             background-position: center;
             
             /* Ajuste de márgenes para la unión con el rodillo */
-            margin-top: -25%; 
-            margin-bottom: -25%;
+            margin-top: -11%; 
+            margin-bottom: -12%;
 
             /* Espaciado interior */
-            padding: 16% 8% 12% 8%;
+            padding: 30% 8% 15% 8%;
 
             box-shadow: inset 0 0 50px rgba(90, 40, 10, 0.4);
             position: relative;
@@ -123,15 +125,15 @@
         }
 
         /* Tamaños de fuente para PC */
-        .encabezado h3 { font-size: 16px; font-weight: normal; margin: 0 0 5px 0; }
-        .encabezado h1 { font-size: 26px; color: #2c1a10; margin: 15px 0; letter-spacing: 1px; }
-        .encabezado h2 { font-size: 20px; font-style: italic; color: #4a2e15; margin: 0; }
+        .encabezado h3 { font-size: 15px; font-weight: normal; margin: 0 0 5px 0; }
+        .encabezado h1 { font-size: 20px; color: #2c1a10; margin: 15px 0; letter-spacing: 1px; }
+        .encabezado h2 { font-size: 15px; font-style: italic; color: #4a2e15; margin: 0; }
         
         .adorno {
             text-align: center;
-            font-size: 24px;
+            font-size: 15px;
             color: #8b6b4a;
-            margin: -10px 0 20px 0;
+            margin: -5px 0 10px 0;
         }
 
         .cuerpo-texto p, .cuerpo-texto li { 
@@ -143,14 +145,14 @@
 
         .cuerpo-texto strong { 
             color: #2c1a10; 
-            font-size: 16px; 
+            font-size: 15px; 
         }
 
         .foto-perfil {
             width: 300px;
-            max-width: 100%;
+            max-width: 80%;
             display: block;              
-            margin: 0 auto 20px auto;    
+            margin: 0 auto 15px auto;    
             padding: 4px;
             box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
             filter: sepia(0.4) contrast(1.1);
@@ -158,11 +160,11 @@
 
         .footer-convocatoria {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 25px;
             font-style: italic;
             border-top: 1px dashed #8b6b4a;
             padding-top: 20px;
-            font-size: 14px;
+            font-size: 11px;
         }
 
         /* --- EFECTOS DE ANIMACIÓN --- */
@@ -193,7 +195,7 @@
            ========================================= */
         @media (max-width: 600px) {
             .cuerpo-papel { 
-                width: 90%; 
+                width: 80%; 
                 margin-top: -8%; /* Ajuste suave para que el papel y el rodillo conecten bien */
                 margin-bottom: -8%;
                 /* Mucho espacio arriba (22%) para que el texto no toque el rodillo */
@@ -201,19 +203,19 @@
             }
             
             /* REDUCCIÓN DE TEXTOS PARA QUE SE VEAN BIEN EN MÓVIL */
-            .encabezado h1 { font-size: 20px; margin: 10px 0; }
-            .encabezado h2 { font-size: 16px; }
-            .encabezado h3 { font-size: 13px; }
+            .encabezado h1 { font-size: 15px; margin: 10px 0; }
+            .encabezado h2 { font-size: 13px; }
+            .encabezado h3 { font-size: 10px; }
             
-            .adorno { font-size: 18px; margin: 0 0 15px 0; }
+            .adorno { font-size: 14px; margin: 0 0 15px 0; }
 
             .cuerpo-texto p, .cuerpo-texto li { 
-                font-size: 13px; /* Letra de párrafos más pequeña y proporcionada */
+                font-size: 10px; /* Letra de párrafos más pequeña y proporcionada */
                 line-height: 1.4; 
             }
-            .cuerpo-texto strong { font-size: 14px; }
+            .cuerpo-texto strong { font-size: 11px; }
             
-            .footer-convocatoria { font-size: 12px; }
+            .footer-convocatoria { font-size: 9px; }
 
             .foto-perfil { 
                 width: 85%; /* Mantiene la foto con buen tamaño pero respetando los márgenes */
